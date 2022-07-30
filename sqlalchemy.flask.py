@@ -51,7 +51,8 @@ def precip():
     # convert results to a dictionary with date as key and prcp as value
     prcp_dict = dict(recent_prcp)
 
-    # return json list of dictionary
+    # close session and return json list of dictionary
+    session.close()
     return jsonify(prcp_dict)
 
 
@@ -64,7 +65,9 @@ def stations():
     # convert results to a dict
     stations_dict = dict(stations)
 
-    # return json list of dict (I decided to do a dict instead of a list here to show both the station name and the station number)
+   # close session and return json list of dictionary
+    session.close()
+    #I decided to do a dict instead of a list here to show both the station name and the station number)
     return jsonify(stations_dict)
 
 
@@ -81,7 +84,8 @@ def tobs():
     # convert results to dict (the a dict provide visibility of temperature by date )
     tobs_dict = dict(tobs_station)
 
-    # return json list of dict
+   # close session and return json list of dictionary
+    session.close()
     return jsonify(tobs_dict)
 
 
@@ -106,7 +110,8 @@ def start_date(start, end=None):
     keys = ["Min Temp", "Max Temp", "Avg Temp"]
 
     temp_dict = {keys[i]: results[i] for i in range(len(keys))}
-
+# close session and return json list of dictionary
+    session.close()
     return jsonify(temp_dict)
 
 
